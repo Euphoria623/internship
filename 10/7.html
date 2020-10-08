@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>wake up课表复刻</title>
+    <style type="text/css">
+       td,tr{ 
+        width: 35px;
+        height: 35px; 
+        font-size: 3px;
+        table-layout: fixed;
+        word-break:break-all;
+        vertical-align: top;
+        margin:0px;
+        border:0px;
+        padding: 0px;
+        text-align: center ;
+       }
+    .one{width: 200px;
+       text-align: left
+       }
+    .two{width: 140px;
+       text-align: left
+       }
+    .three{width: 140px;
+       text-align: right
+       }
+    
+    .blue{
+      background-color:rgb(9, 96, 196);
+    color:azure
+    }
+
+    .yellow{
+    background-color: rgb(204, 155, 31);
+    color: white;
+    }
+    
+    .purple{
+    background-color: rgb(171,145,255);
+    color: white;
+    }
+
+    .orange{
+    background-color: darksalmon;
+    color: white;
+    }
+
+    .grey{
+      background-color: rgb(92, 92, 85);
+    color: white;
+    }
+
+    .green{
+         background-color: rgb(179, 243, 50);
+        color: white;
+    }
+
+    .pink{
+      background-color: rgb(197, 96, 150);
+      color:white 
+    }
+   
+    .transparent{
+      background-color: transparent;
+    
+    }
+    div{
+    
+    background-image: url("C:/Users/GMZ/Desktop/icon/background.jpg");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center top ;
+    background-size: 300px
+    }
+
+
+    button{
+      margin: 0;
+      padding: 0;
+      border: 1px solid transparent; 
+      outline: none;
+    }
+    
+    #div1, #div2, #div3，#div4{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    
+    }
+    #div5{
+    display:inline-table;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    
+    }
+    .black_overlay{ 
+        display: none; 
+        position: absolute; 
+        top: 0%; 
+        left: 0%; 
+        width: 100%; 
+        height: 100%; 
+        background-color: black; 
+        z-index:1001; 
+        -moz-opacity: 0.8; 
+        opacity:.80; 
+        filter: alpha(opacity=88); 
+    } 
+    .white_content { 
+        display: none; 
+        position: absolute; 
+        top: 30%; 
+        left: 39%; 
+        width: 20%; 
+        height: 30%; 
+        padding: 16px; 
+        border: 0px; 
+        background-color: pink; 
+        z-index:1002; 
+        overflow:hidden; 
+    } 
+    a:link { 
+color:white; 
+text-decoration:none; 
+} 
+    a:visited { 
+color:#00FF00; 
+text-decoration:none; 
+} 
+    a:hover { 
+color:#000000; 
+text-decoration:none; 
+} 
+    a:active { 
+color:#FFFFFF; 
+text-decoration:none; 
+} 
+    p{font-family: "楷体";}
+    h2{text-align: centerS;}
+    #volet_clos {position: fixed;top: 0px; left: 0;width: 100%;}
+        #volet {width: 20%;padding: 16px;background:pink; }
+        /* 初始定位 */
+        #volet {position: absolute;left: 0px;top: 375px;transition: all .5s ease-in;}   
+        #volet a.ouvrir,#volet a.fermer {position: absolute;right: -88px;top: 150px;}
+        /* 点击过后改变 target  */
+        #volet a.fermer {display: none;}
+        #volet:target {left: 0px;top: 150px;}
+        #volet:target a.fermer {display: block;}
+        #volet:target a.ouvrir {display: none;}
+        #volet_clos:target #volet {left: 0px;top: 375px;}
+        #volet a.ouvrir,#volet a.fermer{position: absolute;right: calc(40%);top: -40px;padding: 10px 25px; background: #555; color: #fff; text-decoration: none;text-align: center; width: 120px;}
+    </style> 
+    
+    <link rel="icon" href="C:/Users/GMZ/Desktop/icon/icon.png" sizes="16x16" type="png"> 
+
+<body>
+  
+  <div id="light1" class="white_content" contenteditable="true">
+    <b>微积分</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light1').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第1-2节 &nbsp;&nbsp;08：00-09；40
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼B401 
+    </p>
+  </div>
+
+  <div id="light2" class="white_content" contenteditable="true">
+    <b>微积分</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-6节 &nbsp;&nbsp;14：00-15；35
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼B401 
+    </p>
+  </div> 
+
+  <div id="light3" class="white_content" contenteditable="true">
+    <b>微积分</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light3').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第3-4节 &nbsp;&nbsp;10：10-11；55
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼B401 
+    </p>
+  </div> 
+ 
+  <div id="light4" class="white_content" contenteditable="true">
+    <b>中国语文</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light4').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第3-4节 &nbsp;&nbsp;10：10-11；55
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东十二楼F101
+    </p>
+  </div> 
+
+  <div id="light5" class="white_content" contenteditable="true">
+    <b>工程制图</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light5').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-8节 &nbsp;&nbsp;14：00-17；35
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东十二楼F102
+    </p>
+  </div> 
+
+  <div id="light6" class="white_content" contenteditable="true">
+    <b>信息技术导论</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light6').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第7-8节 &nbsp;&nbsp;15：55-17；35
+      <br> 
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼D414
+    </p>
+  </div> 
+
+  <div id="light7" class="white_content"contenteditable="true">
+    <b>计算机与程序设计基础</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light7').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第1-2节 &nbsp;&nbsp;08：00-09；40
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼D320
+    </p>
+  </div> 
+
+  <div id="light8" class="white_content"contenteditable="true">
+    <b>计算机与程序设计基础</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light8').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-6节 &nbsp;&nbsp;14：00-15:35
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼D320
+    </p>
+  </div> 
+
+  <div id="light9" class="white_content"contenteditable="true">
+    <b>综合英语</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light9').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第7-8节 &nbsp;&nbsp;15：55-17；35
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼A103
+    </p>
+  </div> 
+
+  <div id="light10" class="white_content"contenteditable="true">
+    <b>综合英语</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light10').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第1-2节 &nbsp;&nbsp;08：00-09；40
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼A103
+    </p>
+  </div> 
+  <div id="light11" class="white_content"contenteditable="true">
+    <b>线性代数</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light11').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第1-2节 &nbsp;&nbsp;08：00-09；40
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼B302
+    </p>
+  </div> 
+  <div id="light12" class="white_content"contenteditable="true">
+    <b>线性代数</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light12').style.display='none';document.getElementById('fade').style.display='none'">
+      <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a>
+    <p>
+      <img src="C:/Users/GMZ/Desktop/icon/排课表.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第5-13周；第15-19周
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/时间.png" style="max-width:20px;max-height:20px;" >
+      &nbsp;&nbsp;第3-4节 &nbsp;&nbsp;10：10-11；55
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/联系人.png" style="max-width:20px;max-height:20px;" >  
+      &nbsp;&nbsp;授课老师   
+      <br>
+      <img src="C:/Users/GMZ/Desktop/icon/地点.png" style="max-width:20px;max-height:20px;" >    
+      &nbsp;&nbsp;东九楼B302
+    </p>
+  </div> 
+  
+    
+    <div id="light13" class="white_content">
+      <h2>导出课程</h2>
+      <p >
+        需要自行选择一个位置保存
+        <br>
+        不要修改扩展名
+        <br>
+        导出后可选分享       
+      </p>
+      <a href = "javascript:void(0)" onclick = "document.getElementById('light13').style.display='none';document.getElementById('fade').style.display='none'">
+        <img src="C:/Users/GMZ/Desktop/icon/关闭.png" style="max-width:20px;max-height:20px;" ></a></div> 
+    <div id="fade" class="black_overlay"></div> 
+
+    
+    <div id="volet_clos">
+      <div id="volet">
+          <p>查看更多课表</好>
+          <p>新建课表</p>
+          <p>更换背景</p>
+          
+          <a href="#volet_clos" aria-hidden="true" class="fermer">滑入</a>
+      </div>
+  </div>
+  
+  <div>
+      <header> 
+        <table align="center"> 
+          <tr>
+            <td class="two"><font size="3px;">2020/10/1</font><br>第七周&nbsp;&nbsp;非本周</td>
+            <td class="three">
+              <div1 >
+              <button1 type="button" >
+                <a href = "javascript:void(0)" onclick = "document.getElementById('light13').style.display='block';document.getElementById('fade').style.display='block'">
+                  <img src="C:/Users/GMZ/Desktop/icon/导出.png" style="max-width:20px;max-height:20px;" ></a>
+             </button1>
+            </div1>
+            <div2>
+              <button2 type="button" onclick="tj()">
+                <img src="C:/Users/GMZ/Desktop/icon/添加.png" style="max-width:20px;max-height:20px;" >
+               </button2>
+            </div2>
+            <div3>
+              <button3 type="button"onclick="alert('正在导出课表')">
+                <img src="C:/Users/GMZ/Desktop/icon/下载.png" style="max-width:20px;max-height:20px;" >
+               </button3>
+            </div3>
+            <div4>
+              <button4 type="button">
+                <a href="#volet"  aria-hidden="true" class="ouvrir">
+              <img src="C:/Users/GMZ/Desktop/icon/更多.png" style="max-width:20px;max-height:20px;" ></a>
+             </button4>
+            </div4>
+          </td>
+         </tr>
+      </table>
+    </header>
+    
+  </header>
+  <table align="center">
+    <tr>
+      <th>十<br>月</th>
+      <th>一<br>12</th>
+      <th>二<br>13</th>
+      <th>三<br>14</th>
+      <th>四<br>15</th>
+      <th>五<br>16</th>
+      <th>六<br>17</th>
+      <th>日<br>18</th>
+    </tr>
+
+    <tr>
+      <td>1<br>08:00<br>08:50</td>
+      ><td rowspan="2" class="pink">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light1').style.display='block';document.getElementById('fade').style.display='block'">
+        <br>微积分<br>@东九楼<br>B401</a></td>
+      <td rowspan="2" class="purple">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light11').style.display='block';document.getElementById('fade').style.display='block'">
+          <br>线性代数<br>@东九楼<br>B302</a></td>
+      <td rowspan="2" class="orange">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light7').style.display='block';document.getElementById('fade').style.display='block'">
+        计算机与程序设计基础<br>@东九楼<br>D320</a></td>
+      <td rowspan="2"></td>
+      <td rowspan="2" class="blue">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light10').style.display='block';document.getElementById('fade').style.display='block'">
+          <br>综合英语<br>@东九楼<br>A103</a></td>
+      <td rowspan="8"></td>
+      <td rowspan="8"></td>
+    </tr>
+
+    <tr>
+      <td>2<br>08:45<br>09:40</td>
+    </tr>
+    
+    <tr>
+      <td>3<br>10:10<br>10:55</td>
+      <td rowspan="2" class="yellow">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light4').style.display='block';document.getElementById('fade').style.display='block'">
+        <br>中国语文<br>@东十二楼<br>F101</a></td>
+      <td rowspan="2"></td>
+      <td rowspan="2"></td>
+      <td rowspan="2" class="purple">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light12').style.display='block';document.getElementById('fade').style.display='block'">
+        <br>线性代数<br>@东九楼<br>B302</a></td>
+      <td rowspan="2" class="pink">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light3').style.display='block';document.getElementById('fade').style.display='block'">
+        <br>微积分<br>@东九楼<br>B401</a></td>
+    </tr>
+
+    <tr>
+      <td>4<br>10:55<br>11:50</td>
+    </tr>
+
+    <tr>
+      <td>5<br>14:00<br>14:40</td>
+      <td rowspan="4" class="green">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light5').style.display='block';document.getElementById('fade').style.display='block'">
+        <br>工程制图<br>@东十二楼<br>F102</a></td>
+      <td rowspan="2"></td>
+      <td rowspan="2" class="pink">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">
+        <br>微积分<br>@东九楼<br>B401</a></td>
+      <td rowspan="2"></td>
+      <td rowspan="2" class="orange">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light8').style.display='block';document.getElementById('fade').style.display='block'">
+        计算机与程序设计基础<br>@东九楼<br>D320</a></td>
+    </tr>
+
+    <tr>
+      <td>6<br>14:40<br>15:35</td>
+    </tr>
+    
+    <tr>
+      <td>7<br>15:55<br>16:30</td>
+      <td rowspan="2" class="blue">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light9').style.display='block';document.getElementById('fade').style.display='block'">
+        <br>综合英语<br>@东九楼<br>A103</a></td>
+      <td rowspan="2" class="grey">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light6').style.display='block';document.getElementById('fade').style.display='block'">
+        信息技术导论<br>@东九楼<br>D404</a></td>
+      <td rowspan="2"></td>
+      <td rowspan="2"></td>
+    </tr>
+
+    <tr>
+      <td><br>8<br>16:30<br>17:35</td>
+    </tr>
+  </table>
+  </div>
+</body>
+<script>
+  var tj = function(){
+      var x = prompt ("课程: ", "输入课程");/*第一个变量为提示语，第二个变量为默认初始值*/
+      alert(x);
+      var y = prompt ("任课老师: ", "输入老师");/*第一个变量为提示语，第二个变量为默认初始值*/
+      alert(y);
+      var z = prompt ("上课地点: ", "输入地点");/*第一个变量为提示语，第二个变量为默认初始值*/
+      alert(z);
+    
+  }
+  
+
+
+</script>
+</html>
